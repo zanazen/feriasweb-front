@@ -15,7 +15,7 @@ function Register() {
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.nome]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleImage = (e) => {
@@ -98,10 +98,10 @@ function Register() {
           />
         </Form.Group>
 
-//        <Form.Group>
+{/* //        <Form.Group>
 //          <Form.Label>Imagem de perfil</Form.Label>
 //          <Form.Control type="file" onChange={handleImage} />
-//        </Form.Group>
+//        </Form.Group> */}
 
         <Form.Group className="mb-3">
           <Form.Label>Senha</Form.Label>
