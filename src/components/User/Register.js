@@ -6,7 +6,7 @@ import { api } from "../../api/api";
 
 function Register() {
   const navigate = useNavigate();
-//  const [img, setImg] = useState("");
+  const [img, setImg] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -18,11 +18,11 @@ function Register() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-//  const handleImage = (e) => {
-//    setImg(e.target.files[0]);
-//  };
+  const handleImage = (e) => {
+    setImg(e.target.files[0]);
+  };
 
- const handleUpload = async () => {
+  const handleUpload = async () => {
     try {
       const uploadData = new FormData();
       uploadData.append("picture", img);
@@ -57,7 +57,7 @@ function Register() {
     } catch (error) {
       console.log(error);
 
-      toast.error("Não foi possível cadastrar", {
+      toast.error("Não foi possível fazer o cadastro", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -70,16 +70,17 @@ function Register() {
     }
   };
 
-    return (
-        <Container
-        style={{ height: "100vh" }}
-        className="d-flex flex-column align-items-center justify-content-center" >
-        <Form className="w-50" onSubmit={handleSubmit}>
+  return (
+    <Container
+      style={{ height: "100vh" }}
+      className="d-flex flex-column align-items-center justify-content-center"
+    >
+      <Form className="w-50" onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
-          <Form.Label>Nome do Usuário/Colaborador</Form.Label>
+          <Form.Label>Nome completo</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Insira seu nome para identificação"
+            placeholder="Insira um nome para identificação"
             name="name"
             value={form.name}
             onChange={handleChange}
@@ -87,20 +88,20 @@ function Register() {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>E-mail</Form.Label>
+          <Form.Label>Endereço de e-mail</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Insira o seu e-mail"
+            placeholder="Insira o seu melhor endereço de e-mail"
             name="email"
             value={form.email}
             onChange={handleChange}
           />
         </Form.Group>
 
-//        <Form.Group>
-//          <Form.Label>Imagem de perfil</Form.Label>
-//          <Form.Control type="file" onChange={handleImage} />
-//        </Form.Group>
+        <Form.Group>
+          <Form.Label>Imagem de perfil</Form.Label>
+          <Form.Control type="file" onChange={handleImage} />
+        </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Senha</Form.Label>
@@ -125,19 +126,19 @@ function Register() {
         </Form.Group>
 
         <Button className="my-3" variant="dark" type="submit">
-          Cadastrar usuário/colaborador
+          Cadastrar usuário
         </Button>
       </Form>
-
       <Form.Text>
         Já possui cadastro? Faça já o
         <Link className="text-warning fw-bold text-decoration-none" to="/login">
           {" "}
           login
         </Link>
+        .
       </Form.Text>
     </Container>
-    );
+  );
 }
 
 export default Register;
