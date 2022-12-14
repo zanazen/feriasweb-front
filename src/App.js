@@ -13,8 +13,8 @@ import EmployeeList from "./components/Employee/EmployeeList";
 import AddEmployee from "./components/Employee/AddEmployee";
 import EmployeeDetails from "./components/Employee/EmployeeDetails";
 import NavigationBar from "./components/NavigationBar";
-import FeriasList from "./components/Todo/FeriasList";
-import AddFerias from "./components/Todo/AddFerias";
+import FeriasList from "./components/Ferias/FeriasList";
+import AddFerias from "./components/Ferias/AddFerias";
 
 function App() {
   const [feriasForm, setFeriasForm] = useState({
@@ -28,14 +28,14 @@ function App() {
     nome: "",    
     email: "",
     cargo: "",     
-    departmento: ""    
+    departamento: ""    
   });
 
   const [departamentoForm, setDepartamentoForm] = useState({
     nome: "",    
     email: "",
     cargo: "",     
-    departmento: ""    
+    departamento: ""    
   });
 
   return (

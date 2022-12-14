@@ -6,11 +6,16 @@ import { api } from "../../api/api";
 function AddEmployee({ userForm, setUserForm }) {
   const navigate = useNavigate();
 
+  console.log(userForm) 
+  console.log(setUserForm)
+
   const handleChange = (e) => {
     if (e.target.name === "active") {
       setUserForm({ ...userForm, active: e.target.checked });
       return;
     }
+
+   
 
     setUserForm({ ...userForm, [e.target.name]: e.target.value });
   };
