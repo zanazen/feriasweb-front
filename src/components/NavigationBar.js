@@ -48,7 +48,7 @@ function NavigationBar() {
                   style={{ width: "35px" }}
                   className="rounded-circle me-2"
                   src={loggedUser?.user.profileImg}
-                  alt={`Imagem de perfil de ${loggedUser?.user.name}`}
+                  alt={`Imagem de perfil de ${loggedUser?.user.nome}`}
                 />
               </Link>
               <Button variant="danger" onClick={handleLogout}>

@@ -7,12 +7,12 @@ function AddDepartamento({ departamentoForm, setDepartamentoForm }) {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    if (e.target.name === "active") {
+    if (e.target.nome === "active") {
       setDepartamentoForm({ ...departamentoForm, active: e.target.checked });
       return;
     }
 
-    setDepartamentoForm({ ...departamentoForm, [e.target.name]: e.target.value });
+    setDepartamentoForm({ ...departamentoForm, [e.target.nome]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -69,8 +69,8 @@ function AddDepartamento({ departamentoForm, setDepartamentoForm }) {
               <Form.Control
                 type="text"
                 placeholder="Insira o nome do departamento"
-                name="name"
-                value={departamentoForm.name}
+                name="nomedepartamento"
+                value={departamentoForm.nomedepartamento}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -95,7 +95,7 @@ function AddDepartamento({ departamentoForm, setDepartamentoForm }) {
               <Form.Control
                 type="text"
                 placeholder="Insira o estado de localização departamento"
-                name="sigla"
+                name="estado"
                 value={departamentoForm.estado}
                 onChange={handleChange}
               />
@@ -109,7 +109,7 @@ function AddDepartamento({ departamentoForm, setDepartamentoForm }) {
               <Form.Control
                 type="text"
                 placeholder="Insira o município de localização departamento"
-                name="sigla"
+                name="municipio"
                 value={departamentoForm.municipio}
                 onChange={handleChange}
               />

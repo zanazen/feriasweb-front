@@ -37,35 +37,21 @@ function FeriasList({ feriasForm, setFeriasForm }) {
       ferias.progress.toLowerCase().includes(search.toLowerCase())
     )
     .map((ferias) => {
-      const deadline = new Date(ferias.deadline);
-      const dd = deadline.getDate() + 1;
-      const mm = deadline.getMonth() + 1;
-      const yyyy = deadline.getFullYear();
+      const inicio1 = new Date(ferias.inicio1);
+      const dd = inicio1.getDate() + 1;
+      const mm = inicio1.getMonth() + 1;
+      const yyyy = inicio1.getFullYear();
 
       return (
         <Col key={ferias._id}>
-          <Card style={{ width: "18rem" }} className="m-3">
-            <Card.Header>
-              <Card.Title className="m-0">{ferias.title}</Card.Title>
-            </Card.Header>
-            <Card.Body>
-              <Card.Text>{ferias.description}</Card.Text>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroup.Item>
-                Prazo: {dd}/{mm}/{yyyy}
-              </ListGroup.Item>
-              <ListGroup.Item>{ferias.progress}</ListGroup.Item>
-              <ListGroup.Item>
-                Responsável:
-                <Link
-                  className="nav-link d-inline"
-                  to={`/funcionarios/${ferias.responsable._id}`}
-                >
-                  {" "}
-                  {ferias.responsable.name}
-                </Link>
-              </ListGroup.Item>
+          <Card style={{ width: "18rem" }} className="m-3">            
+            <ListGroup className="list-group-flush">            
+              <ListGroup.Item>{ferias.inicio1}</ListGroup.Item>
+              <ListGroup.Item>{ferias.fim1}</ListGroup.Item>
+              <ListGroup.Item>{ferias.inicio2}</ListGroup.Item>
+              <ListGroup.Item>{ferias.fim2}</ListGroup.Item>
+              <ListGroup.Item>{ferias.inicio3}</ListGroup.Item>
+              <ListGroup.Item>{ferias.fim3}</ListGroup.Item>              
             </ListGroup>
             <Card.Footer className="d-flex justify-content-around">
               <EditFerias
@@ -85,7 +71,7 @@ function FeriasList({ feriasForm, setFeriasForm }) {
       <Form className="my-4">
         <Form.Control
           type="search"
-          placeholder="Pesquisar férias por progresso"
+          placeholder="Pesquisar férias"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
