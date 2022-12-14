@@ -21,12 +21,12 @@ function EditEmployee({ id, userForm, setUserForm }) {
   }, [id, setUserForm]);
 
   const handleChange = (e) => {
-    if (e.target.name === "active") {
+    if (e.target.nome === "active") {
       setUserForm({ ...userForm, active: e.target.checked });
       return;
     }
 
-    setUserForm({ ...userForm, [e.target.name]: e.target.value });
+    setUserForm({ ...userForm, [e.target.nome]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -37,7 +37,7 @@ function EditEmployee({ id, userForm, setUserForm }) {
 
       navigate("/funcionarios");
 
-      toast.success("Funcionário atualizado!", {
+      toast.success("Colaborador atualizado!", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -50,7 +50,7 @@ function EditEmployee({ id, userForm, setUserForm }) {
     } catch (error) {
       console.log(error);
 
-      toast.error("Não foi possível editar funcionário", {
+      toast.error("Não foi possível editar Colaborador", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -66,44 +66,26 @@ function EditEmployee({ id, userForm, setUserForm }) {
   return (
     <div>
       <Button variant="primary" onClick={handleShow}>
-        Editar funcionário
+        Editar Colaborador
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Cadastrar novo funcionários</Modal.Title>
+          <Modal.Title>Cadastrar novo colaborador</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-              <Form.Check
-                type="checkbox"
-                label="Funcionário ativo na empresa"
-                name="active"
-                onChange={handleChange}
-                defaultChecked
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Nome do funcionário</Form.Label>
+              <Form.Label>Nome do colaborador</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Insira o nome completo do funcionário"
-                name="name"
-                value={userForm.name}
+                placeholder="Insira o nome completo do colaborador"
+                name="nome"
+                value={userForm.nome}
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Número de telefone</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Insira o número de telefone para contato com DDD"
-                name="phone"
-                value={userForm.phone}
-                onChange={handleChange}
-              />
-            </Form.Group>
+
             <Form.Group className="mb-3">
               <Form.Label>Endereço de e-mail</Form.Label>
               <Form.Control
@@ -112,61 +94,33 @@ function EditEmployee({ id, userForm, setUserForm }) {
                 name="email"
                 value={userForm.email}
                 onChange={handleChange}
-              />
+              />            
             </Form.Group>
+
             <Form.Group className="mb-3">
-              <Form.Label>Data de aniversário</Form.Label>
+              <Form.Label>Cargo do Colaborador</Form.Label>
               <Form.Control
-                type="date"
-                name="birthDate"
-                value={userForm.birthDate}
+                type="text"
+                placeholder="Insira o cargo do colaborador"
+                name="cargo"
+                value={userForm.cargo}
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Remuneração por mês</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Insira o valor da remuneração mensal"
-                name="salary"
-                value={userForm.salary}
-                onChange={handleChange}
-              />
-            </Form.Group>
+            
             <Form.Group className="mb-3">
               <Form.Label>Departamento</Form.Label>
-              <Form.Select name="department" onChange={handleChange}>
-                <option value="0">Selecione uma opção</option>
-                <option value="People">People</option>
-                <option value="Front-end">Front-end</option>
-                <option value="Back-end">Back-end</option>
-                <option value="Mobile">Mobile</option>
-                <option value="Financeiro">Financeiro</option>
-                <option value="Marketing">Marketing</option>
-              </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Data de admissão</Form.Label>
               <Form.Control
-                type="date"
-                placeholder="Insira o valor da remuneração mensal"
-                name="admissionDate"
-                value={userForm.admissionDate}
+                type="departamento"
+                placeholder="Insira o departamento do colaborador"
+                name="departamento"
+                value={userForm.departamento}
                 onChange={handleChange}
-              />
+              />  
             </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Status</Form.Label>
-              <Form.Select name="status" onChange={handleChange}>
-                <option value="0">Selecione uma opção</option>
-                <option value="Disponível">Disponível</option>
-                <option value="Alocado">Alocado</option>
-                <option value="De Férias">De Férias</option>
-                <option value="De Licença">De Licença</option>
-              </Form.Select>
-            </Form.Group>
+
             <Button variant="success" type="submit">
-              Atualizar funcionário
+              Atualizar Colaborador
             </Button>
           </Form>
         </Modal.Body>

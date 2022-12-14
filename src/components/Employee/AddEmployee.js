@@ -21,7 +21,7 @@ function AddEmployee({ userForm, setUserForm }) {
       await api.post("/user/create", userForm);
       navigate("/funcionarios");
 
-      toast.success("Novo funcionário foi cadastrado!", {
+      toast.success("Novo colaborador foi cadastrado!", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -34,7 +34,7 @@ function AddEmployee({ userForm, setUserForm }) {
     } catch (error) {
       console.log(error);
 
-      toast.error("Não foi possível cadastrar novo funcionário", {
+      toast.error("Não foi possível cadastrar novo colaborador", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -49,46 +49,28 @@ function AddEmployee({ userForm, setUserForm }) {
 
   return (
     <Container>
-      <h2 className="my-5">Cadastrar novo funcionário</h2>
+      <h2 className="my-5">Cadastrar novo colaborador</h2>
       <Form onSubmit={handleSubmit}>
         <Row>
-          <Col className="d-flex justify-content-center align-items-center">
-            <Form.Group className="mb-3">
-              <Form.Check
-                type="checkbox"
-                label="Funcionário ativo na empresa"
-                name="active"
-                onChange={handleChange}
-                checked={userForm.active}
-              />
-            </Form.Group>
-          </Col>
+//          <Col className="d-flex justify-content-center align-items-center">
+//            <Form.Group className="mb-3">
+//              
+//            </Form.Group>
+//         </Col>
           <Col>
             <Form.Group className="mb-3">
-              <Form.Label>Nome do funcionário</Form.Label>
+              <Form.Label>Nome do colaborador</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Insira o nome completo do funcionário"
-                name="name"
-                value={userForm.name}
+                placeholder="Insira o nome completo do colaborador"
+                name="nome"
+                value={userForm.nome}
                 onChange={handleChange}
               />
             </Form.Group>
           </Col>
         </Row>
         <Row>
-          <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Número de telefone</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Insira o número de telefone para contato com DDD"
-                name="phone"
-                value={userForm.phone}
-                onChange={handleChange}
-              />
-            </Form.Group>
-          </Col>
           <Col>
             <Form.Group className="mb-3">
               <Form.Label>Endereço de e-mail</Form.Label>
@@ -101,61 +83,38 @@ function AddEmployee({ userForm, setUserForm }) {
               />
             </Form.Group>
           </Col>
-        </Row>
-        <Row>
+          </Row>
+          <Row>
           <Col>
             <Form.Group className="mb-3">
-              <Form.Label>Remuneração por mês</Form.Label>
+              <Form.Label>Cargo do colaborador</Form.Label>
               <Form.Control
-                type="number"
-                placeholder="Insira o valor da remuneração mensal"
-                name="salary"
-                value={userForm.salary}
+                type="text"
+                placeholder="Insira o cargo do colaborador"
+                name="cargo"
+                value={userForm.cargo}
                 onChange={handleChange}
               />
             </Form.Group>
           </Col>
+          </Row>
+          <Row>
           <Col>
             <Form.Group>
               <Form.Label>Departamento</Form.Label>
-              <Form.Select name="department" onChange={handleChange}>
-                <option value="0">Selecione uma opção</option>
-                <option value="People">People</option>
-                <option value="Front-end">Front-end</option>
-                <option value="Back-end">Back-end</option>
-                <option value="Mobile">Mobile</option>
-                <option value="Financeiro">Financeiro</option>
-                <option value="Marketing">Marketing</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group>
-              <Form.Label>Data de admissão</Form.Label>
               <Form.Control
-                type="date"
-                name="admissionDate"
-                value={userForm.admissionDate}
+                type="text"
+                placeholder="Insira o departamento do colaborador"
+                name="departamento"
+                value={userForm.departamento}
                 onChange={handleChange}
               />
             </Form.Group>
           </Col>
-          <Col>
-            <Form.Group>
-              <Form.Label>Status</Form.Label>
-              <Form.Select name="status" onChange={handleChange}>
-                <option value="0">Selecione uma opção</option>
-                <option value="Disponível">Disponível</option>
-                <option value="Alocado">Alocado</option>
-                <option value="De Férias">De Férias</option>
-                <option value="De Licença">De Licença</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
-        </Row>
-        <Button className="mt-4" variant="success" type="submit">
-          Cadastrar funcionário
-        </Button>
+          </Row>
+          <Button className="mt-4" variant="success" type="submit">
+            Cadastrar Colaborador
+          </Button>
       </Form>
     </Container>
   );
