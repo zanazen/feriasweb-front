@@ -21,12 +21,12 @@ function EditEmployee({ id, userForm, setUserForm }) {
   }, [id, setUserForm]);
 
   const handleChange = (e) => {
-    if (e.target.name === "active") {
+    if (e.target.nome === "active") {
       setUserForm({ ...userForm, active: e.target.checked });
       return;
     }
 
-    setUserForm({ ...userForm, [e.target.name]: e.target.value });
+    setUserForm({ ...userForm, [e.target.nome]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -89,8 +89,8 @@ function EditEmployee({ id, userForm, setUserForm }) {
               <Form.Control
                 type="text"
                 placeholder="Insira o nome completo do funcionário"
-                name="name"
-                value={userForm.name}
+                name="nome"
+                value={userForm.nome}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -135,7 +135,7 @@ function EditEmployee({ id, userForm, setUserForm }) {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Departamento</Form.Label>
-              <Form.Select name="department" onChange={handleChange}>
+              <Form.Select nome="department" onChange={handleChange}>
                 <option value="0">Selecione uma opção</option>
                 <option value="People">People</option>
                 <option value="Front-end">Front-end</option>

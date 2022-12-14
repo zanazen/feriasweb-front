@@ -24,12 +24,12 @@ function DepartamentoList() {
 
   const renderEmployees = employees
     .filter((employee) =>
-      employee.name.toLowerCase().includes(search.toLowerCase())
+      employee.nome.toLowerCase().includes(search.toLowerCase())
     )
     .map((employee) => {
       return (
         <tr key={employee._id}>
-          <td>{employee.name}</td>
+          <td>{employee.nome}</td>
           <td>{employee.email}</td>
           <td>{employee.department}</td>
           <td>{employee.status}</td>

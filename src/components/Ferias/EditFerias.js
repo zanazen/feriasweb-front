@@ -22,7 +22,7 @@ function EditFerias({ id, feriasForm, setFeriasForm }) {
   }, [id, setFeriasForm]);
 
   const handleChange = (e) => {
-    setFeriasForm({ ...feriasForm, [e.target.name]: e.target.value });
+    setFeriasForm({ ...feriasForm, [e.target.nome]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -66,42 +66,70 @@ function EditFerias({ id, feriasForm, setFeriasForm }) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Atualizar tarefa</Modal.Title>
+          <Modal.Title>Atualizar férias</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-              <Form.Label>Título</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Insira um título das férias"
-                name="title"
-                value={feriasForm.title}
-                onChange={handleChange}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Descrição</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Insira uma explicação das férias"
-                name="description"
-                value={feriasForm.description}
-                onChange={handleChange}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Prazo de conclusão</Form.Label>
+              <Form.Label>Início 1</Form.Label>
               <Form.Control
                 type="date"
-                name="deadline"
-                value={feriasForm.deadline}
+                placeholder="Insira a data de início"
+                name="inicio1"
+                value={feriasForm.inicio1}
                 onChange={handleChange}
               />
             </Form.Group>
-
+            <Form.Group className="mb-3">
+              <Form.Label>Fim 1</Form.Label>
+              <Form.Control
+                type="date"
+                placeholder="Insira a data fim"
+                name="fim1"
+                value={feriasForm.fim1}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Início 2</Form.Label>
+              <Form.Control
+                type="date"
+                placeholder="Insira a data de início"
+                name="inicio2"
+                value={feriasForm.inicio2}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Fim 2</Form.Label>
+              <Form.Control
+                type="date"
+                placeholder="Insira a data fim"
+                name="fim2"
+                value={feriasForm.fim2}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Início 3</Form.Label>
+              <Form.Control
+                type="date"
+                placeholder="Insira a data de início"
+                name="inicio3"
+                value={feriasForm.inicio3}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Fim 3</Form.Label>
+              <Form.Control
+                type="date"
+                placeholder="Insira a data fim"
+                name="fim3"
+                value={feriasForm.fim3}
+                onChange={handleChange}
+              />
+            </Form.Group>
             <Button variant="primary" type="submit">
               Atualizar férias
             </Button>

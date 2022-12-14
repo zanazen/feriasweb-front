@@ -13,11 +13,11 @@ import EmployeeList from "./components/Employee/EmployeeList";
 import AddEmployee from "./components/Employee/AddEmployee";
 import EmployeeDetails from "./components/Employee/EmployeeDetails";
 import NavigationBar from "./components/NavigationBar";
-import TodoList from "./components/Todo/TodoList";
-import AddTodo from "./components/Todo/AddTodo";
+import FeriasList from "./components/Todo/FeriasList";
+import AddFerias from "./components/Todo/AddFerias";
 
 function App() {
-  const [todoForm, setTodoForm] = useState({
+  const [feriasForm, setFeriasForm] = useState({
     title: "",
     description: "",
     progress: "",
@@ -25,18 +25,17 @@ function App() {
   });
 
   const [userForm, setUserForm] = useState({
-    name: "",
-    salary: "",
+    nome: "",    
     email: "",
-    phone: "",
-    department: "",
-    admissionDate: "",
-    status: "",
-    active: true,
-    address: {
-      city: "",
-      state: "",
-    },
+    cargo: "",     
+    departmento: ""    
+  });
+
+  const [departamentoForm, setDepartamentoForm] = useState({
+    nome: "",    
+    email: "",
+    cargo: "",     
+    departmento: ""    
   });
 
   return (
@@ -63,12 +62,12 @@ function App() {
             }
           />
           <Route
-            path="/tarefas"
-            element={<TodoList todoForm={todoForm} setTodoForm={setTodoForm} />}
+            path="/folgas"
+            element={<FeriasList todoForm={feriasForm} setFeriasForm={setFeriasForm} />}
           />
           <Route
             path="/tarefas/nova-tarefa"
-            element={<AddTodo todoForm={todoForm} setTodoForm={setTodoForm} />}
+            element={<AddFerias todoForm={feriasForm} setFeriasForm={setFeriasForm} />}
           />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
