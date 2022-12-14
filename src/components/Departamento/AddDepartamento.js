@@ -7,12 +7,12 @@ function AddDepartamento({ departamentoForm, setDepartamentoForm }) {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    if (e.target.nome === "active") {
+    if (e.target.name === "active") {
       setDepartamentoForm({ ...departamentoForm, active: e.target.checked });
       return;
     }
 
-    setDepartamentoForm({ ...departamentoForm, [e.target.nome]: e.target.value });
+    setDepartamentoForm({ ...departamentoForm, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {

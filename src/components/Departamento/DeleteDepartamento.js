@@ -36,7 +36,7 @@ function DeleteDepartamento({ id }) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Deseja exclui o departamento?</Modal.Title>
+          <Modal.Title>Deseja excluir o departamento?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           Pense bem! Uma vez excluída não será possível recuperar o departamento.

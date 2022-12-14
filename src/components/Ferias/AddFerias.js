@@ -22,7 +22,7 @@ function AddFerias({ feriasForm, setFeriasForm }) {
   }, [setFeriasForm]);
 
   const handleChange = (e) => {
-    setFeriasForm({ ...feriasForm, [e.target.nome]: e.target.value });
+    setFeriasForm({ ...feriasForm, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
