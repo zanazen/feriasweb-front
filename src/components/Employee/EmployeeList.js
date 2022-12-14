@@ -29,10 +29,9 @@ function PeopleList() {
     .map((employee) => {
       return (
         <tr key={employee._id}>
-          <td>{employee.name}</td>
+          <td>{employee.nome}</td>
           <td>{employee.email}</td>
-          <td>{employee.department}</td>
-          <td>{employee.status}</td>
+          <td>{employee.departmento}</td>
           <td>
             <Button variant="info" size="sm">
               <Link className="nav-link" to={`/funcionarios/${employee._id}`}>
@@ -52,7 +51,7 @@ function PeopleList() {
           <Form className="my-4">
             <Form.Control
               type="search"
-              placeholder="Procurar funcionário"
+              placeholder="Procurar colaborador"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -62,9 +61,8 @@ function PeopleList() {
               <tr>
                 <th>Nome</th>
                 <th>Endereço de e-mail</th>
+                <th>Cargo</th>
                 <th>Departamento</th>
-                <th>Status</th>
-                <th>Ações</th>
               </tr>
             </thead>
             <tbody>{renderEmployees}</tbody>
