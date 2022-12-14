@@ -35,18 +35,18 @@ function DeleteTodo({ id }) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Deseja excluir funcionário?</Modal.Title>
+          <Modal.Title>Deseja excluir colaborador?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           Pense bem! Uma vez excluída não será possível recuperar as informações
-          deste funcionário.
+          deste colaborador.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cancelar
           </Button>
           <Button variant="danger" onClick={() => deleteEmployee(id)}>
-            Excluir funcionário
+            Excluir colaborador
           </Button>
         </Modal.Footer>
       </Modal>

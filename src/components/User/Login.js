@@ -14,7 +14,7 @@ function Login() {
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.nome]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -26,7 +26,7 @@ function Login() {
       setLoggedUser({ ...response.data });
       localStorage.setItem("loggedUser", JSON.stringify(response.data));
 
-      navigate("/tarefas");
+      navigate("/folgas");
 
       toast.success("Login realizado com sucesso", {
         position: "top-right",

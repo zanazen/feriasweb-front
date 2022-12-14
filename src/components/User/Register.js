@@ -8,14 +8,14 @@ function Register() {
   const navigate = useNavigate();
   const [img, setImg] = useState("");
   const [form, setForm] = useState({
-    name: "",
+    nome: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.nome]: e.target.value });
   };
 
   const handleImage = (e) => {
@@ -81,8 +81,8 @@ function Register() {
           <Form.Control
             type="text"
             placeholder="Insira um nome para identificação"
-            name="name"
-            value={form.name}
+            name="nome"
+            value={form.nome}
             onChange={handleChange}
           />
         </Form.Group>
@@ -91,17 +91,17 @@ function Register() {
           <Form.Label>Endereço de e-mail</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Insira o seu melhor endereço de e-mail"
+            placeholder="Insira o seu endereço de e-mail"
             name="email"
             value={form.email}
             onChange={handleChange}
           />
         </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Imagem de perfil</Form.Label>
-          <Form.Control type="file" onChange={handleImage} />
-        </Form.Group>
+//        <Form.Group>
+//          <Form.Label>Imagem de perfil</Form.Label>
+//          <Form.Control type="file" onChange={handleImage} />
+//        </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Senha</Form.Label>
