@@ -21,7 +21,7 @@ function AddDepartamento({ departamentoForm, setDepartamentoForm }) {
       await api.post("/departamento/create", departamentoForm);
       navigate("/departamentos");
 
-      toast.success("Novo funcionário foi cadastrado!", {
+      toast.success("Novo departamento foi cadastrado!", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -34,7 +34,7 @@ function AddDepartamento({ departamentoForm, setDepartamentoForm }) {
     } catch (error) {
       console.log(error);
 
-      toast.error("Não foi possível cadastrar novo funcionário", {
+      toast.error("Não foi possível cadastrar novo departamento", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -49,14 +49,14 @@ function AddDepartamento({ departamentoForm, setDepartamentoForm }) {
 
   return (
     <Container>
-      <h2 className="my-5">Cadastrar novo funcionário</h2>
+      <h2 className="my-5">Cadastrar novo departamento</h2>
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col className="d-flex justify-content-center align-items-center">
             <Form.Group className="mb-3">
               <Form.Check
                 type="checkbox"
-                label="Funcionário ativo na empresa"
+                label="Departamento ativo na empresa"
                 name="active"
                 onChange={handleChange}
                 checked={departamentoForm.active}
@@ -65,10 +65,10 @@ function AddDepartamento({ departamentoForm, setDepartamentoForm }) {
           </Col>
           <Col>
             <Form.Group className="mb-3">
-              <Form.Label>Nome do funcionário</Form.Label>
+              <Form.Label>Nome do departamento</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Insira o nome completo do funcionário"
+                placeholder="Insira o nome do departamento"
                 name="name"
                 value={departamentoForm.name}
                 onChange={handleChange}
@@ -79,82 +79,45 @@ function AddDepartamento({ departamentoForm, setDepartamentoForm }) {
         <Row>
           <Col>
             <Form.Group className="mb-3">
-              <Form.Label>Número de telefone</Form.Label>
+              <Form.Label>Sigla</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Insira o número de telefone para contato com DDD"
-                name="phone"
-                value={departamentoForm.phone}
+                placeholder="Insira a sigla do departamento"
+                name="sigla"
+                value={departamentoForm.sigla}
                 onChange={handleChange}
               />
             </Form.Group>
           </Col>
           <Col>
             <Form.Group className="mb-3">
-              <Form.Label>Endereço de e-mail</Form.Label>
+              <Form.Label>Estado</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="Insira o endereço de e-mail válido para contato"
-                name="email"
-                value={departamentoForm.email}
+                type="text"
+                placeholder="Insira o estado de localização departamento"
+                name="sigla"
+                value={departamentoForm.estado}
                 onChange={handleChange}
               />
             </Form.Group>
-          </Col>
+          </Col>          
         </Row>
         <Row>
-          <Col>
+        <Col>
             <Form.Group className="mb-3">
-              <Form.Label>Remuneração por mês</Form.Label>
+              <Form.Label>Município</Form.Label>
               <Form.Control
-                type="number"
-                placeholder="Insira o valor da remuneração mensal"
-                name="salary"
-                value={departamentoForm.salary}
+                type="text"
+                placeholder="Insira o município de localização departamento"
+                name="sigla"
+                value={departamentoForm.municipio}
                 onChange={handleChange}
               />
             </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group>
-              <Form.Label>Departamento</Form.Label>
-              <Form.Select name="department" onChange={handleChange}>
-                <option value="0">Selecione uma opção</option>
-                <option value="People">People</option>
-                <option value="Front-end">Front-end</option>
-                <option value="Back-end">Back-end</option>
-                <option value="Mobile">Mobile</option>
-                <option value="Financeiro">Financeiro</option>
-                <option value="Marketing">Marketing</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group>
-              <Form.Label>Data de admissão</Form.Label>
-              <Form.Control
-                type="date"
-                name="admissionDate"
-                value={departamentoForm.admissionDate}
-                onChange={handleChange}
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group>
-              <Form.Label>Status</Form.Label>
-              <Form.Select name="status" onChange={handleChange}>
-                <option value="0">Selecione uma opção</option>
-                <option value="Disponível">Disponível</option>
-                <option value="Alocado">Alocado</option>
-                <option value="De Férias">De Férias</option>
-                <option value="De Licença">De Licença</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
+          </Col>                    
         </Row>
         <Button className="mt-4" variant="success" type="submit">
-          Cadastrar funcionário
+          Cadastrar departamento
         </Button>
       </Form>
     </Container>

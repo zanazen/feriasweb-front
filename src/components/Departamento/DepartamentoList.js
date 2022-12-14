@@ -3,7 +3,7 @@ import { Button, Container, Form, Spinner, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { api } from "../../api/api";
 
-function PeopleList() {
+function DepartamentoList() {
   const [employees, setEmployees] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -75,4 +75,4 @@ function PeopleList() {
   );
 }
 
-export default PeopleList;
+export default DepartamentoList;

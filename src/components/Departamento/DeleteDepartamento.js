@@ -1,21 +1,22 @@
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../../api/api";
 
-function DeleteTodo({ id }) {
-  const navigate = useNavigate();
+function DeleteDepartamento({ id }) {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    document.location.reload();
+  };
   const handleShow = () => setShow(true);
 
-  const deleteEmployee = async (id) => {
-    await api.delete(`/user/delete/${id}`);
-    navigate("/funcionarios");
+  const deleteDepartamento = async (id) => {
+    await api.delete(`/departamento/delete/${id}`);
+    handleClose();
 
-    toast.success("Usuário deletado com sucesso!", {
+    toast.warning("Departamento deletado com sucesso!", {
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,
@@ -35,18 +36,17 @@ function DeleteTodo({ id }) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Deseja excluir funcionário?</Modal.Title>
+          <Modal.Title>Deseja exclui o departamento?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Pense bem! Uma vez excluída não será possível recuperar as informações
-          deste funcionário.
+          Pense bem! Uma vez excluída não será possível recuperar o departamento.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="danger" onClick={() => deleteEmployee(id)}>
-            Excluir funcionário
+          <Button variant="danger" onClick={() => deleteDepartamento(id)}>
+            Excluir departamento
           </Button>
         </Modal.Footer>
       </Modal>
@@ -54,4 +54,4 @@ function DeleteTodo({ id }) {
   );
 }
 
-export default DeleteTodo;
+export default DeleteDepartamento;
