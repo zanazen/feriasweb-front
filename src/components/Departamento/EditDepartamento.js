@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../../api/api";
 
-function EditEmployee({ id, userForm, setUserForm }) {
+function EditDepartamento({ id, userForm, setUserForm }) {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
@@ -21,12 +21,12 @@ function EditEmployee({ id, userForm, setUserForm }) {
   }, [id, setUserForm]);
 
   const handleChange = (e) => {
-    if (e.target.nome === "active") {
+    if (e.target.name === "active") {
       setUserForm({ ...userForm, active: e.target.checked });
       return;
     }
 
-    setUserForm({ ...userForm, [e.target.nome]: e.target.value });
+    setUserForm({ ...userForm, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -35,9 +35,9 @@ function EditEmployee({ id, userForm, setUserForm }) {
     try {
       await api.put(`user/edit/${id}`, userForm);
 
-      navigate("/funcionarios");
+      navigate("/departamentos");
 
-      toast.success("Funcionário atualizado!", {
+      toast.success("Departamento atualizado atualizado!", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -50,7 +50,7 @@ function EditEmployee({ id, userForm, setUserForm }) {
     } catch (error) {
       console.log(error);
 
-      toast.error("Não foi possível editar funcionário", {
+      toast.error("Não foi possível editar departamento", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -66,107 +66,67 @@ function EditEmployee({ id, userForm, setUserForm }) {
   return (
     <div>
       <Button variant="primary" onClick={handleShow}>
-        Editar funcionário
+        Editar departamento
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Cadastrar novo funcionários</Modal.Title>
+          <Modal.Title>Cadastrar novo departamento</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
               <Form.Check
                 type="checkbox"
-                label="Funcionário ativo na empresa"
+                label="Departamento ativo na empresa"
                 name="active"
                 onChange={handleChange}
                 defaultChecked
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Nome do funcionário</Form.Label>
+              <Form.Label>Nome do departamento</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Insira o nome completo do funcionário"
+                placeholder="Insira o nome completo do departamento"
                 name="nome"
-                value={userForm.nome}
+                value={userForm.nomedepartamento}
                 onChange={handleChange}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Número de telefone</Form.Label>
+              <Form.Label>Sigla do departamento</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Insira o número de telefone para contato com DDD"
-                name="phone"
-                value={userForm.phone}
+                placeholder="Insira a sigla do departamento"
+                name="sigla"
+                value={userForm.sigla}
                 onChange={handleChange}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Endereço de e-mail</Form.Label>
+              <Form.Label>Estado</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="Insira o endereço de e-mail válido para contato"
-                name="email"
-                value={userForm.email}
+                type="text"
+                placeholder="Insira o estado do departamento"
+                name="estado"
+                value={userForm.estado}
                 onChange={handleChange}
               />
-            </Form.Group>
+            </Form.Group>             
             <Form.Group className="mb-3">
-              <Form.Label>Data de aniversário</Form.Label>
+              <Form.Label>Município</Form.Label>
               <Form.Control
-                type="date"
-                name="birthDate"
-                value={userForm.birthDate}
+                type="text"
+                placeholder="Insira o município do departamento"
+                name="município"
+                value={userForm.município}
                 onChange={handleChange}
               />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Remuneração por mês</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Insira o valor da remuneração mensal"
-                name="salary"
-                value={userForm.salary}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Departamento</Form.Label>
-              <Form.Select nome="department" onChange={handleChange}>
-                <option value="0">Selecione uma opção</option>
-                <option value="People">People</option>
-                <option value="Front-end">Front-end</option>
-                <option value="Back-end">Back-end</option>
-                <option value="Mobile">Mobile</option>
-                <option value="Financeiro">Financeiro</option>
-                <option value="Marketing">Marketing</option>
-              </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Data de admissão</Form.Label>
-              <Form.Control
-                type="date"
-                placeholder="Insira o valor da remuneração mensal"
-                name="admissionDate"
-                value={userForm.admissionDate}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Status</Form.Label>
-              <Form.Select name="status" onChange={handleChange}>
-                <option value="0">Selecione uma opção</option>
-                <option value="Disponível">Disponível</option>
-                <option value="Alocado">Alocado</option>
-                <option value="De Férias">De Férias</option>
-                <option value="De Licença">De Licença</option>
-              </Form.Select>
-            </Form.Group>
+            </Form.Group>        
+            
             <Button variant="success" type="submit">
-              Atualizar funcionário
+              Atualizar departamento
             </Button>
           </Form>
         </Modal.Body>
@@ -175,4 +135,4 @@ function EditEmployee({ id, userForm, setUserForm }) {
   );
 }
 
-export default EditEmployee;
+export default EditDepartamento;

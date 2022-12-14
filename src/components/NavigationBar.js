@@ -42,15 +42,7 @@ function NavigationBar() {
                 Adicionar novas férias
               </Link>
             </div>
-            <div className="d-flex flex-row align-items-center">
-              <Link className="nav-link" to="/perfil">
-                <img
-                  style={{ width: "35px" }}
-                  className="rounded-circle me-2"
-                  src={loggedUser?.user.profileImg}
-                  alt={`Imagem de perfil de ${loggedUser?.user.nome}`}
-                />
-              </Link>
+            <div className="d-flex flex-row align-items-center">             
               <Button variant="danger" onClick={handleLogout}>
                 Logout
               </Button>

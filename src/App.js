@@ -15,13 +15,17 @@ import EmployeeDetails from "./components/Employee/EmployeeDetails";
 import NavigationBar from "./components/NavigationBar";
 import FeriasList from "./components/Ferias/FeriasList";
 import AddFerias from "./components/Ferias/AddFerias";
+import AddDepartamento from "./components/Departamento/AddDepartamento";
+import DepartamentoList from "./components/Departamento/DepartamentoList";
 
 function App() {
   const [feriasForm, setFeriasForm] = useState({
-    title: "",
-    description: "",
-    progress: "",
-    deadline: "",
+    inicio1: "",
+    fim1: "",
+    inicio2: "",
+    fim2: "",
+    inicio3: "",
+    fim3: "",    
   });
 
   const [userForm, setUserForm] = useState({
@@ -32,10 +36,10 @@ function App() {
   });
 
   const [departamentoForm, setDepartamentoForm] = useState({
-    nome: "",    
-    email: "",
-    cargo: "",     
-    departamento: ""    
+    nomedepartamento: "",    
+    sigla: "",
+    estado: "",     
+    município: ""    
   });
 
   return (
@@ -66,8 +70,16 @@ function App() {
             element={<FeriasList todoForm={feriasForm} setFeriasForm={setFeriasForm} />}
           />
           <Route
-            path="/tarefas/nova-tarefa"
+            path="/folgas/nova-folga"
             element={<AddFerias todoForm={feriasForm} setFeriasForm={setFeriasForm} />}
+          />
+          <Route
+            path="/departametos"
+            element={<DepartamentoList todoForm={departamentoForm} setDepartamentoForm={setDepartamentoForm} />}
+          />
+          <Route
+            path="/departamentos/novo-departamento"
+            element={<AddDepartamento todoForm={departamentoForm} setDepartamentoForm={setDepartamentoForm} />}
           />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

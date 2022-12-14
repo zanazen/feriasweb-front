@@ -31,8 +31,7 @@ function DepartamentoList() {
         <tr key={employee._id}>
           <td>{employee.nome}</td>
           <td>{employee.email}</td>
-          <td>{employee.department}</td>
-          <td>{employee.status}</td>
+          <td>{employee.departmento}</td>          
           <td>
             <Button variant="info" size="sm">
               <Link className="nav-link" to={`/funcionarios/${employee._id}`}>
