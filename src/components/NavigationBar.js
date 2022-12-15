@@ -36,13 +36,13 @@ function NavigationBar() {
                 </Link>
               )}
               <Link className="nav-link" to="/folgas">
-                Visualizar férias
+                Listar Férias
               </Link>
               <Link className="nav-link" to="/folgas/nova-tarefa">
-                Adicionar novas férias
+                Adicionar Férias
               </Link>
             </div>
-            <div className="d-flex flex-row align-items-center">             
+            <div className="d-flex flex-row align-items-center">
               <Button variant="danger" onClick={handleLogout}>
                 Logout
               </Button>
