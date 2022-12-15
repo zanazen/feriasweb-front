@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const apiURL = "https://feriasweb.cyclic.app"
+const apiURL = {
+  development: "http://localhost:8080",
+  production: "https://feriasweb.cyclic.app",
+}
 
 const api = axios.create({ baseURL: apiURL});
 
