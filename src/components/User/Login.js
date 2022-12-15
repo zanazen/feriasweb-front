@@ -81,7 +81,7 @@ function Login() {
             placeholder="Insira a senha cadastrada"
           />
         </Form.Group>
-        <Button className="my-3" variant="dark" type="submit">
+        <Button className="my-3" variant="blue" type="submit">
           Entrar no sistema
         </Button>
       </Form>
