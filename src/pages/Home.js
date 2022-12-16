@@ -17,11 +17,6 @@ function Home() {
           Entrar no sistema
         </Link>
       </Button>
-      <Button className="p-4" variant="dark" size="lg">
-        <Link className="nav-link" to="/departamentos">
-          Cadastrar departamento
-        </Link>
-      </Button>
     </Container>
   );
 }

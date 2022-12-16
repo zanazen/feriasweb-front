@@ -1,36 +1,29 @@
-import { useContext, useEffect } from "react";
+import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
 
-function AddFerias({ feriasForm, setFeriasForm }) {
+function AddFerias() {
   const navigate = useNavigate();
-  const { loggedUser } = useContext(AuthContext);
-  const employeeId = loggedUser.user._id;
 
-  useEffect(() => {
-    setFeriasForm({
-      inicio1: "",
-      fim1: "",
-      inicio2: "",
-      fim2: "",
-      inicio3: "",
-      fim3: "",
-    });
-  }, [setFeriasForm]);
+  const [form, setForm] = useState({
+    inicioPeriodo:"",
+    fimPeriodo:"",
+    status: "agendado"      
+})
 
+  
   const handleChange = (e) => {
-    setFeriasForm({ ...feriasForm, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if(form.inicioPeriodo && form.fimPeriodo){
     try {
-      await api.post(`/ferias/create/${employeeId}`, feriasForm);
-      navigate("/folgas");
+      await api.post(`/ferias/marcar/`, form);
+      navigate("/perfil");
 
       toast.success("Novas férias cadastradas!", {
         position: "top-right",
@@ -43,8 +36,7 @@ function AddFerias({ feriasForm, setFeriasForm }) {
         theme: "colored",
       });
     } catch (error) {
-      console.log(error);
-
+      console.log(error)
       toast.error("Não foi possível cadastrar novas férias", {
         position: "top-right",
         autoClose: 2000,
@@ -55,8 +47,10 @@ function AddFerias({ feriasForm, setFeriasForm }) {
         progress: undefined,
         theme: "colored",
       });
+
+      ;
     }
-  };
+  } else{alert("É necessário preencher o início e o fim das férias para cadastro")}};
 
   return (
     <Container>
@@ -65,78 +59,29 @@ function AddFerias({ feriasForm, setFeriasForm }) {
         <Row>
           <Col>
             <Form.Group className="mb-3">
-              <Form.Label>Início 1</Form.Label>
+              <Form.Label>Início</Form.Label>
               <Form.Control
                 type="date"
                 placeholder="Insira a data de início"
-                name="inicio1"
-                value={feriasForm.inicio1}
+                name="inicioPeriodo"
+                value={form.inicioPeriodo}
                 onChange={handleChange}
               />
             </Form.Group>
           </Col>
           <Col>
             <Form.Group className="mb-3">
-              <Form.Label>Fim 1</Form.Label>
+              <Form.Label>Fim</Form.Label>
               <Form.Control
                 type="date"
                 placeholder="Insira a data fim"
-                name="fim1"
-                value={feriasForm.fim1}
-                onChange={handleChange}
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Início 2</Form.Label>
-              <Form.Control
-                type="date"
-                placeholder="Insira a data de início"
-                name="inicio1"
-                value={feriasForm.inicio2}
-                onChange={handleChange}
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Fim 2</Form.Label>
-              <Form.Control
-                type="date"
-                placeholder="Insira a data fim"
-                name="fim1"
-                value={feriasForm.fim2}
-                onChange={handleChange}
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Início 3</Form.Label>
-              <Form.Control
-                type="date"
-                placeholder="Insira a data de início"
-                name="inicio3"
-                value={feriasForm.inicio3}
-                onChange={handleChange}
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Fim 3</Form.Label>
-              <Form.Control
-                type="date"
-                placeholder="Insira a data fim"
-                name="fim3"
-                value={feriasForm.fim3}
+                name="fimPeriodo"
+                value={form.fimPeriodo}
                 onChange={handleChange}
               />
             </Form.Group>
           </Col>
         </Row>
-
         <Button variant="primary" type="submit">
           Cadastrar férias
         </Button>

@@ -26,7 +26,7 @@ function Login() {
       setLoggedUser({ ...response.data });
       localStorage.setItem("loggedUser", JSON.stringify(response.data));
 
-      navigate("/folgas");
+      navigate("/perfil");
 
       toast.success("Login realizado com sucesso", {
         position: "top-right",
