@@ -18,9 +18,7 @@ function Register() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleImage = (e) => {
-    setImg(e.target.files[0]);
-  };
+  
 
   const handleUpload = async () => {
     try {
@@ -38,10 +36,14 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const imgURL = await handleUpload();
-      await api.post("/user/register", { ...form, profileImg: imgURL });
-
+    if (form.password !== form.confirmPassword) {
+      alert("Senhas incompatíveis");
+      return;
+    }
+  
+    try {            
+      
+      await api.post("/user/register", { ...form });
       navigate("/login");
 
       toast.success("Cadastro concluído com sucesso!", {
@@ -75,7 +77,7 @@ function Register() {
       style={{ height: "100vh" }}
       className="d-flex flex-column align-items-center justify-content-center"
     >
-      <Form className="w-50" onSubmit={handleSubmit}>
+      <Form className="w-50" onSubmit={(e) => {handleSubmit(e)}}>
         <Form.Group className="mb-3">
           <Form.Label>Nome completo</Form.Label>
           <Form.Control
