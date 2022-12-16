@@ -23,27 +23,43 @@ function NavigationBar() {
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar
+      bg="dark"
+      variant="dark"
+      expand="lg"
+    >
       <Container>
-        <Navbar.Brand href="/folgas">IronRH</Navbar.Brand>
+        <Navbar.Brand href="/perfil">Ferias Web</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto w-100 d-flex justify-content-between align-items-center">
             <div className="d-flex flex-row">
               {loggedUser?.user?.isAdmin && (
-                <Link className="nav-link" to="/funcionarios">
+                <Link
+                  className="nav-link"
+                  to="/funcionarios"
+                >
                   Visualizar funcionários
                 </Link>
               )}
-              <Link className="nav-link" to="/folgas">
-                Listar Férias
+              <Link
+                className="nav-link"
+                to="/perfil"
+              >
+                Ver perfil
               </Link>
-              <Link className="nav-link" to="/folgas/nova-tarefa">
+              <Link
+                className="nav-link"
+                to="/folgas/nova-folga"
+              >
                 Adicionar Férias
               </Link>
             </div>
             <div className="d-flex flex-row align-items-center">
-              <Button variant="danger" onClick={handleLogout}>
+              <Button
+                variant="danger"
+                onClick={handleLogout}
+              >
                 Logout
               </Button>
             </div>
