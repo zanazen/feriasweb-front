@@ -6,7 +6,6 @@ import { api } from "../../api/api";
 
 function Register() {
   const navigate = useNavigate();
-  const [img, setImg] = useState("");
   const [form, setForm] = useState({
     nome: "",
     email: "",
@@ -15,22 +14,8 @@ function Register() {
   });
 
   const handleChange = (e) => {
+    console.log(form)
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  
-
-  const handleUpload = async () => {
-    try {
-      const uploadData = new FormData();
-      uploadData.append("picture", img);
-
-      const response = await api.post("/upload-image", uploadData);
-
-      return response.data.url;
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -43,7 +28,7 @@ function Register() {
   
     try {            
       
-      await api.post("/user/register", { ...form });
+      await api.post("/user/register", form);
       navigate("/login");
 
       toast.success("Cadastro concluído com sucesso!", {
